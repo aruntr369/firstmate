@@ -1,0 +1,26 @@
+===== BASE 8f756bb =====
+bash under test: /bin/bash -> 3.2.57(1)-release
+backlog row before spawn: queued
+--- fm-spawn.sh bash32-scout-a1 <project> --scout ---
+error: task bash32-scout-a1's backlog item could not be moved to In flight (/var/folders/7r/602jcxr91hxgckh1_cxd7yxm0000gn/T/fm-scout-drive.g9a8Ku/base/bin/fm-timeout-lib.sh: line 224: BASHPID: unbound variable); its record was removed so no worker is left that the backlog does not own - close out endpoint firstmate:fm-bash32-scout-a1 and local copy /private/var/folders/7r/602jcxr91hxgckh1_cxd7yxm0000gn/T/scout-drive.TTEP4y/scout-case/wt by hand, then re-run the spawn
+spawn exit=1
+--- after ---
+backlog row after spawn: queued
+task record present: no
+## In flight
+
+## Queued
+
+===== FIX 2eedfd7 =====
+bash under test: /bin/bash -> 3.2.57(1)-release
+backlog row before spawn: queued
+--- fm-spawn.sh bash32-scout-a1 <project> --scout ---
+spawned bash32-scout-a1 harness=claude kind=scout window=firstmate:fm-bash32-scout-a1 worktree=/private/var/folders/7r/602jcxr91hxgckh1_cxd7yxm0000gn/T/scout-drive.tgAQH4/scout-case/wt
+spawn exit=0
+--- after ---
+backlog row after spawn: in_flight
+task record present: yes
+## In flight
+- [ ] bash32-scout-a1 - item for bash32-scout-a1 (kind: scout) (since 2026-10-01)
+
+## Queued

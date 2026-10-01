@@ -1,0 +1,2 @@
+## bounded hang under /bin/bash 3.2 + set -u (fix)
+exit=124 after 2s (124 = bound expired)
