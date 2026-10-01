@@ -221,7 +221,9 @@ fm_exec_timed() {  # <seconds> <grace-seconds> <command...>
     exit 125
   fi
   owner=${FM_EXEC_TIMED_OWNER_PID:-$$}
-  [ "$owner" != "$BASHPID" ] || owner=$PPID
+  # Bash 3.2 has no BASHPID: an exec'd child's PPID is this frame's own pid.
+  # Name /bin/sh, because the caller's PATH may hold no sh.
+  [ "$owner" != "${BASHPID:-$(exec /bin/sh -c 'printf "%s\n" "$PPID"')}" ] || owner=$PPID
   unset FM_EXEC_TIMED_OWNER_PID
   if command -v perl >/dev/null 2>&1; then
     exec perl -MPOSIX=WNOHANG,setpgid -MTime::HiRes=time -e '
